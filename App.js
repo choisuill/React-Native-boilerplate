@@ -10,46 +10,35 @@ import React, {useEffect, useState} from 'react';
 import {Button, SafeAreaView, StyleSheet, Text, ScrollView, View, TextInput} from 'react-native'
 import axios from 'axios'
 // component import
-import TextBox from './components/text/TextBox.js'
-import SaveButton from './components/button/SaveButton.js'
 import AccessoryButton from "./components/button/AccessoryButton.js";
 // react-native-keyboard-accessory library
 import {KeyboardAccessoryView} from "react-native-keyboard-accessory"
 
 
 const App = () => {
-    const [item, setItem] = useState([])
-    const [text, setText] = useState('')
-    const [test, setTest] = useState('')
+    // state usage
+    // const [item, setItem] = useState([])
 
-    async function request() {
-        const DATA = await axios.get('http://10.0.2.2:8000/react/')
-        return DATA.data.results
-    }
+    //axios usage
+    // async function request() {
+    //     const DATA = await axios.get('http://10.0.2.2:8000/react/')
+    //     return DATA.data.results
+    // }
 
-    useEffect(() => {
-        request().then((item) => {
-            setItem(item)
-            setText(item[0].text)
-        })
-    }, [])
+    //effect usage
+    // useEffect(() => {
+    //     request().then((item) => {
+    //         setItem(item)
+    //         setText(item[0].text)
+    //     })
+    // }, [])
 
     return (
         <>
             <SafeAreaView style={styles.container}>
                 <ScrollView>
-                    <ScrollView>
-                        <Text style={styles.hello}>Text</Text>
-                        <TextBox text={text} setText={setText}/>
-                        <SaveButton data={text} setData={setText}/>
-                        <Text>
-                            {item.map(a => a.text)}
-                        </Text>
-                    </ScrollView>
-                    <Text>{test}</Text>
-                    <Button onPress={() => {
-                        setTest('click Button!')
-                    }} title={'test'}/>
+                    <Text style={styles.hello}>Text</Text>
+                    <TextInput>TextInput</TextInput>
                 </ScrollView>
             </SafeAreaView>
             <KeyboardAccessoryView style={styles.accessory} androidAdjustResize hideBorder={true}>
